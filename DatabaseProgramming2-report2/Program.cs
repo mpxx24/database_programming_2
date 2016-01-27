@@ -18,7 +18,9 @@ namespace DatabaseProgramming2_report2 {
         ///     Mains the specified arguments.
         /// </summary>
         private static void Main() {
-            Parallel.For(0, numberOfUsers, i => Helper.UpdateFirstRow(i));
+            //Parallel.For(0, numberOfUsers, i => Helper.UpdateFirstRow(i));
+            //Parallel.For(0, numberOfUsers, i => Helper.InsertData(i));
+            Parallel.For(0, numberOfUsers, i => Helper.DeleteData(i));
 
             Console.ReadLine();
         }
