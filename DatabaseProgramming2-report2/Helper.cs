@@ -30,7 +30,7 @@ namespace DatabaseProgramming2_report2 {
             }
         }
 
-        public static void InsertData(int addon) {
+        public static void InsertData(int number) {
             try {
                 using (var con = new SqlConnection(connString)) {
                     con.Open();
@@ -38,7 +38,7 @@ namespace DatabaseProgramming2_report2 {
                     updateCommand.CommandType = CommandType.StoredProcedure;
                     var pInput = new SqlParameter("@valueToEnter", SqlDbType.NVarChar);
                     pInput.Direction = ParameterDirection.Input;
-                    pInput.Value = string.Format("test{0}", addon);
+                    pInput.Value = string.Format("test{0}", number);
                     updateCommand.Parameters.Add(pInput);
 
                     updateCommand.ExecuteNonQuery();
@@ -64,6 +64,28 @@ namespace DatabaseProgramming2_report2 {
                 }
             }
             catch (Exception ex) {
+                Console.WriteLine(ex.ToString());
+            }
+        }
+
+        public static void SelectData(int howMany) {
+            try
+            {
+                using (var con = new SqlConnection(connString))
+                {
+                    con.Open();
+                    var updateCommand = new SqlCommand("spdDeleteTeachersTestData", con);
+                    updateCommand.CommandType = CommandType.StoredProcedure;
+                    var pInput = new SqlParameter("@valueToEnter", SqlDbType.Int);
+                    pInput.Direction = ParameterDirection.Input;
+                    pInput.Value = howMany;
+                    updateCommand.Parameters.Add(pInput);
+
+                    updateCommand.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
                 Console.WriteLine(ex.ToString());
             }
         }
