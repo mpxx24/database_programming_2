@@ -74,7 +74,7 @@ namespace DatabaseProgramming2_report2 {
                 using (var con = new SqlConnection(connString))
                 {
                     con.Open();
-                    var updateCommand = new SqlCommand("spdDeleteTeachersTestData", con);
+                    var updateCommand = new SqlCommand("spdSelectTeachersTestData", con);
                     updateCommand.CommandType = CommandType.StoredProcedure;
                     var pInput = new SqlParameter("@valueToEnter", SqlDbType.Int);
                     pInput.Direction = ParameterDirection.Input;
